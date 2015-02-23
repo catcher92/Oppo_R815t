@@ -163,7 +163,7 @@
 
     .line 248
     .local v0, inflate:Landroid/view/LayoutInflater;
-    const v4, 0xc090438
+    const v4, #android:layout@transient_notification#t
 
     const/4 v5, 0x0
 
