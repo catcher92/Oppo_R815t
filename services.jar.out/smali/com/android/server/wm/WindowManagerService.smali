@@ -8556,6 +8556,8 @@
 
     move-result-object v1
 
+    const-string v1, "1"
+
     .line 12285
     .local v1, str1:Ljava/lang/String;
     const-string v2, "video"
