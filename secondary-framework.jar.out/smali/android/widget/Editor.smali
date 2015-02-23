@@ -17,6 +17,8 @@
         Landroid/widget/Editor$SelectionStartHandleView;,
         Landroid/widget/Editor$InsertionHandleView;,
         Landroid/widget/Editor$HandleView;,
+        Landroid/widget/Editor$BaiduClipboardPopupWindow;,
+        Landroid/widget/Editor$BaiduActionPopupWindow;,
         Landroid/widget/Editor$ActionPopupWindow;,
         Landroid/widget/Editor$SelectionActionModeCallback;,
         Landroid/widget/Editor$SuggestionsPopupWindow;,
@@ -26,7 +28,8 @@
         Landroid/widget/Editor$EasyEditSpanController;,
         Landroid/widget/Editor$DragLocalState;,
         Landroid/widget/Editor$Blink;,
-        Landroid/widget/Editor$TextViewPositionListener;
+        Landroid/widget/Editor$TextViewPositionListener;,
+        Landroid/widget/Editor$BaiduEditorInjector;
     }
 .end annotation
 
@@ -97,6 +100,8 @@
 .field private mPositionListener:Landroid/widget/Editor$PositionListener;
 
 .field mPreserveDetachedSelection:Z
+
+.field public mSearchText:Ljava/lang/CharSequence;
 
 .field mSelectAllOnFocus:Z
 
@@ -427,7 +432,7 @@
 
     move-result-object v1
 
-    const v2, 0x105004c
+    const v2, #android:dimen@textview_error_popup_default_width#t
 
     invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
 
@@ -1994,7 +1999,7 @@
 
     move-result-object v2
 
-    const v3, 0x10900d2
+    const v3, #android:layout@text_drag_thumbnail#t
 
     const/4 v4, 0x0
 
@@ -2490,7 +2495,7 @@
 
     .line 280
     .local v1, inflater:Landroid/view/LayoutInflater;
-    const v4, 0x10900da
+    const v4, #android:layout@textview_hint#t
 
     const/4 v5, 0x0
 
@@ -3369,13 +3374,11 @@
     .locals 2
 
     .prologue
-    .line 690
     iget-object v0, p0, Landroid/widget/Editor;->mWordIterator:Landroid/text/method/WordIterator;
 
     if-nez v0, :cond_0
 
-    .line 691
-    new-instance v0, Landroid/text/method/WordIterator;
+    new-instance v0, Landroid/text/method/BaiduWordIterator;
 
     iget-object v1, p0, Landroid/widget/Editor;->mTextView:Landroid/widget/TextView;
 
@@ -3383,7 +3386,7 @@
 
     move-result-object v1
 
-    invoke-direct {v0, v1}, Landroid/text/method/WordIterator;-><init>(Ljava/util/Locale;)V
+    invoke-direct {v0, v1}, Landroid/text/method/BaiduWordIterator;-><init>(Ljava/util/Locale;)V
 
     iput-object v0, p0, Landroid/widget/Editor;->mWordIterator:Landroid/text/method/WordIterator;
 
@@ -5949,7 +5952,8 @@
     .parameter "handled"
 
     .prologue
-    .line 841
+    invoke-static {p0}, Landroid/widget/Editor$BaiduEditorInjector;->onEventWordSearch(Landroid/widget/Editor;)V
+
     if-nez p1, :cond_0
 
     iget v6, p0, Landroid/widget/Editor;->mLastDownPositionX:F
@@ -7397,9 +7401,7 @@
 
     .line 1515
     .local v6, top:I
-    add-int/lit8 v7, v3, 0x1
-
-    invoke-virtual {v2, v7}, Landroid/text/Layout;->getLineTop(I)I
+    invoke-static {p0, v3}, Landroid/widget/Editor$BaiduEditorInjector;->fixCursorPostion(Landroid/widget/Editor;I)I
 
     move-result v0
 
@@ -7459,3 +7461,74 @@
     .line 1517
     goto :goto_1
 .end method
+
+# Remove the first '#' if you want to enable this method. It might be invoked from codes of BOSP.
+#.method static synthetic access$invoke-getPositionListener-445b32(Landroid/widget/Editor;)Landroid/widget/Editor$PositionListener;
+#    .locals 1
+#    .parameter "x0"
+#    .prologue
+#    invoke-direct {p0}, Landroid/widget/Editor;->getPositionListener()Landroid/widget/Editor$PositionListener;
+#    move-result-object v0
+#    return-object v0
+#.end method
+
+# Remove the first '#' if you want to enable this method. It might be invoked from codes of BOSP.
+#.method static synthetic access$iget-mUserDictionaryListener-24d648(Landroid/widget/Editor;)Landroid/widget/Editor$UserDictionaryListener;
+#    .locals 1
+#    .parameter "x0"
+#    .prologue
+#    iget-object v0, p0, Landroid/widget/Editor;->mUserDictionaryListener:Landroid/widget/Editor$UserDictionaryListener;
+#    return-object v0
+#.end method
+
+# Remove the first '#' if you want to enable this method. It might be invoked from codes of BOSP.
+#.method static synthetic access$invoke-isPositionVisible-107bb8(Landroid/widget/Editor;II)Z
+#    .locals 1
+#    .parameter "x0"
+#    .parameter "x1"
+#    .parameter "x2"
+#    .prologue
+#    invoke-direct {p0, p1, p2}, Landroid/widget/Editor;->isPositionVisible(II)Z
+#    move-result v0
+#    return v0
+#.end method
+
+# Remove the first '#' if you want to enable this method. It might be invoked from codes of BOSP.
+#.method static synthetic access$invoke-hideInsertionPointCursorController-55040b(Landroid/widget/Editor;)V
+#    .locals 0
+#    .parameter "x0"
+#    .prologue
+#    invoke-direct {p0}, Landroid/widget/Editor;->hideInsertionPointCursorController()V
+#    return-void
+#.end method
+
+# Remove the first '#' if you want to enable this method. It might be invoked from codes of BOSP.
+#.method static synthetic access$invoke-isPositionOnText-3b68fd(Landroid/widget/Editor;FF)Z
+#    .locals 1
+#    .parameter "x0"
+#    .parameter "x1"
+#    .parameter "x2"
+#    .prologue
+#    invoke-direct {p0, p1, p2}, Landroid/widget/Editor;->isPositionOnText(FF)Z
+#    move-result v0
+#    return v0
+#.end method
+
+# Remove the first '#' if you want to enable this method. It might be invoked from codes of BOSP.
+#.method static synthetic access$iget-mTextView-e80fac(Landroid/widget/Editor;)Landroid/widget/TextView;
+#    .locals 1
+#    .parameter "x0"
+#    .prologue
+#    iget-object v0, p0, Landroid/widget/Editor;->mTextView:Landroid/widget/TextView;
+#    return-object v0
+#.end method
+
+# Remove the first '#' if you want to enable this method. It might be invoked from codes of BOSP.
+#.method static synthetic access$invoke-extractedTextModeWillBeStarted-4cc9b4(Landroid/widget/Editor;)Z
+#    .locals 1
+#    .parameter "x0"
+#    .prologue
+#    invoke-direct {p0}, Landroid/widget/Editor;->extractedTextModeWillBeStarted()Z
+#    move-result v0
+#    return v0
+#.end method

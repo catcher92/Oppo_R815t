@@ -1455,23 +1455,33 @@
     .parameter "userId"
 
     .prologue
-    .line 1503
+    move-object/from16 v0, p5
+
+    move-object/from16 v1, p1
+
+    invoke-direct {p0, v1, v0}, Landroid/app/Instrumentation;->checkDynamicPermission(Landroid/content/Context;[Landroid/content/Intent;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_baidu_0
+
+    goto :goto_baidu_0
+
+    :cond_baidu_0
+
     move-object v2, p2
 
     check-cast v2, Landroid/app/IApplicationThread;
 
-    .line 1504
     .local v2, whoThread:Landroid/app/IApplicationThread;
     iget-object v1, p0, Landroid/app/Instrumentation;->mActivityMonitors:Ljava/util/List;
 
     if-eqz v1, :cond_2
 
-    .line 1505
     iget-object v3, p0, Landroid/app/Instrumentation;->mSync:Ljava/lang/Object;
 
     monitor-enter v3
 
-    .line 1506
     :try_start_0
     iget-object v1, p0, Landroid/app/Instrumentation;->mActivityMonitors:Ljava/util/List;
 
@@ -1510,31 +1520,27 @@
 
     if-eqz v1, :cond_0
 
-    .line 1510
     iget v1, v9, Landroid/app/Instrumentation$ActivityMonitor;->mHits:I
 
     add-int/lit8 v1, v1, 0x1
 
     iput v1, v9, Landroid/app/Instrumentation$ActivityMonitor;->mHits:I
 
-    .line 1511
     invoke-virtual {v9}, Landroid/app/Instrumentation$ActivityMonitor;->isBlocking()Z
 
     move-result v1
 
     if-eqz v1, :cond_1
 
-    .line 1512
     monitor-exit v3
 
-    .line 1531
     .end local v8           #N:I
     .end local v9           #am:Landroid/app/Instrumentation$ActivityMonitor;
     .end local v10           #i:I
     :goto_1
+    :goto_baidu_0
     return-void
 
-    .line 1507
     .restart local v8       #N:I
     .restart local v9       #am:Landroid/app/Instrumentation$ActivityMonitor;
     .restart local v10       #i:I
@@ -1667,6 +1673,226 @@
     .parameter "options"
 
     .prologue
+    move-object/from16 v0, p0
+
+    move-object/from16 v1, p1
+
+    move-object/from16 v2, p5
+
+    invoke-direct {v0, v1, v2}, Landroid/app/Instrumentation;->checkDynamicPermission(Landroid/content/Context;Landroid/content/Intent;)Z
+
+    move-result v3
+
+    if-nez v3, :cond_baidu_0
+
+    const/4 v2, 0x0
+
+    goto :goto_baidu_0
+
+    :cond_baidu_0
+
+    move-object/from16 v3, p2
+
+    check-cast v3, Landroid/app/IApplicationThread;
+
+    .local v3, whoThread:Landroid/app/IApplicationThread;
+    move-object/from16 v0, p0
+
+    iget-object v2, v0, Landroid/app/Instrumentation;->mActivityMonitors:Ljava/util/List;
+
+    if-eqz v2, :cond_3
+
+    move-object/from16 v0, p0
+
+    iget-object v4, v0, Landroid/app/Instrumentation;->mSync:Ljava/lang/Object;
+
+    monitor-enter v4
+
+    :try_start_0
+    move-object/from16 v0, p0
+
+    iget-object v2, v0, Landroid/app/Instrumentation;->mActivityMonitors:Ljava/util/List;
+
+    invoke-interface {v2}, Ljava/util/List;->size()I
+
+    move-result v13
+
+    .local v13, N:I
+    const/4 v15, 0x0
+
+    .local v15, i:I
+    :goto_0
+    if-ge v15, v13, :cond_2
+
+    move-object/from16 v0, p0
+
+    iget-object v2, v0, Landroid/app/Instrumentation;->mActivityMonitors:Ljava/util/List;
+
+    invoke-interface {v2, v15}, Ljava/util/List;->get(I)Ljava/lang/Object;
+
+    move-result-object v14
+
+    check-cast v14, Landroid/app/Instrumentation$ActivityMonitor;
+
+    .local v14, am:Landroid/app/Instrumentation$ActivityMonitor;
+    const/4 v2, 0x0
+
+    move-object/from16 v0, p1
+
+    move-object/from16 v1, p5
+
+    invoke-virtual {v14, v0, v2, v1}, Landroid/app/Instrumentation$ActivityMonitor;->match(Landroid/content/Context;Landroid/app/Activity;Landroid/content/Intent;)Z
+
+    move-result v2
+
+    if-eqz v2, :cond_1
+
+    iget v2, v14, Landroid/app/Instrumentation$ActivityMonitor;->mHits:I
+
+    add-int/lit8 v2, v2, 0x1
+
+    iput v2, v14, Landroid/app/Instrumentation$ActivityMonitor;->mHits:I
+
+    invoke-virtual {v14}, Landroid/app/Instrumentation$ActivityMonitor;->isBlocking()Z
+
+    move-result v2
+
+    if-eqz v2, :cond_2
+
+    if-ltz p6, :cond_0
+
+    invoke-virtual {v14}, Landroid/app/Instrumentation$ActivityMonitor;->getResult()Landroid/app/Instrumentation$ActivityResult;
+
+    move-result-object v2
+
+    :goto_1
+    monitor-exit v4
+
+    .end local v13           #N:I
+    .end local v14           #am:Landroid/app/Instrumentation$ActivityMonitor;
+    .end local v15           #i:I
+    :goto_2
+    :goto_baidu_0
+    return-object v2
+
+    .restart local v13       #N:I
+    .restart local v14       #am:Landroid/app/Instrumentation$ActivityMonitor;
+    .restart local v15       #i:I
+    :cond_0
+    const/4 v2, 0x0
+
+    goto :goto_1
+
+    :cond_1
+    add-int/lit8 v15, v15, 0x1
+
+    goto :goto_0
+
+    .end local v14           #am:Landroid/app/Instrumentation$ActivityMonitor;
+    :cond_2
+    monitor-exit v4
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    .end local v13           #N:I
+    .end local v15           #i:I
+    :cond_3
+    const/4 v2, 0x0
+
+    :try_start_1
+    move-object/from16 v0, p5
+
+    invoke-virtual {v0, v2}, Landroid/content/Intent;->setAllowFds(Z)V
+
+    invoke-virtual/range {p5 .. p5}, Landroid/content/Intent;->migrateExtraStreamToClipData()Z
+
+    invoke-static {}, Landroid/app/ActivityManagerNative;->getDefault()Landroid/app/IActivityManager;
+
+    move-result-object v2
+
+    invoke-virtual/range {p1 .. p1}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
+
+    move-result-object v4
+
+    move-object/from16 v0, p5
+
+    invoke-virtual {v0, v4}, Landroid/content/Intent;->resolveTypeIfNeeded(Landroid/content/ContentResolver;)Ljava/lang/String;
+
+    move-result-object v5
+
+    if-eqz p4, :cond_4
+
+    move-object/from16 v0, p4
+
+    iget-object v7, v0, Landroid/app/Activity;->mEmbeddedID:Ljava/lang/String;
+
+    :goto_3
+    const/4 v9, 0x0
+
+    const/4 v10, 0x0
+
+    const/4 v11, 0x0
+
+    move-object/from16 v4, p5
+
+    move-object/from16 v6, p3
+
+    move/from16 v8, p6
+
+    move-object/from16 v12, p7
+
+    invoke-interface/range {v2 .. v12}, Landroid/app/IActivityManager;->startActivity(Landroid/app/IApplicationThread;Landroid/content/Intent;Ljava/lang/String;Landroid/os/IBinder;Ljava/lang/String;IILjava/lang/String;Landroid/os/ParcelFileDescriptor;Landroid/os/Bundle;)I
+
+    move-result v16
+
+    .local v16, result:I
+    move/from16 v0, v16
+
+    move-object/from16 v1, p5
+
+    invoke-static {v0, v1}, Landroid/app/Instrumentation;->checkStartActivityResult(ILjava/lang/Object;)V
+    :try_end_1
+    .catch Landroid/os/RemoteException; {:try_start_1 .. :try_end_1} :catch_0
+
+    .end local v16           #result:I
+    :goto_4
+    const/4 v2, 0x0
+
+    goto :goto_2
+
+    :catchall_0
+    move-exception v2
+
+    :try_start_2
+    monitor-exit v4
+    :try_end_2
+    .catchall {:try_start_2 .. :try_end_2} :catchall_0
+
+    throw v2
+
+    :cond_4
+    const/4 v7, 0x0
+
+    goto :goto_3
+
+    :catch_0
+    move-exception v2
+
+    goto :goto_4
+.end method
+
+.method public execStartActivity(Landroid/content/Context;Landroid/os/IBinder;Landroid/os/IBinder;Landroid/app/Activity;Landroid/content/Intent;ILandroid/os/Bundle;Landroid/os/UserHandle;)Landroid/app/Instrumentation$ActivityResult;
+    .locals 18
+    .parameter "who"
+    .parameter "contextThread"
+    .parameter "token"
+    .parameter "target"
+    .parameter "intent"
+    .parameter "requestCode"
+    .parameter "options"
+    .parameter "user"
+
+    .prologue
     .line 1448
     move-object/from16 v3, p2
 
@@ -1688,6 +1914,232 @@
     monitor-enter v4
 
     .line 1451
+    :try_start_0
+    move-object/from16 v0, p0
+
+    iget-object v2, v0, Landroid/app/Instrumentation;->mActivityMonitors:Ljava/util/List;
+
+    invoke-interface {v2}, Ljava/util/List;->size()I
+
+    move-result v14
+
+    .local v14, N:I
+    const/16 v16, 0x0
+
+    .local v16, i:I
+    :goto_0
+    move/from16 v0, v16
+
+    if-ge v0, v14, :cond_2
+
+    move-object/from16 v0, p0
+
+    iget-object v2, v0, Landroid/app/Instrumentation;->mActivityMonitors:Ljava/util/List;
+
+    move/from16 v0, v16
+
+    invoke-interface {v2, v0}, Ljava/util/List;->get(I)Ljava/lang/Object;
+
+    move-result-object v15
+
+    check-cast v15, Landroid/app/Instrumentation$ActivityMonitor;
+
+    .local v15, am:Landroid/app/Instrumentation$ActivityMonitor;
+    const/4 v2, 0x0
+
+    move-object/from16 v0, p1
+
+    move-object/from16 v1, p5
+
+    invoke-virtual {v15, v0, v2, v1}, Landroid/app/Instrumentation$ActivityMonitor;->match(Landroid/content/Context;Landroid/app/Activity;Landroid/content/Intent;)Z
+
+    move-result v2
+
+    if-eqz v2, :cond_1
+
+    iget v2, v15, Landroid/app/Instrumentation$ActivityMonitor;->mHits:I
+
+    add-int/lit8 v2, v2, 0x1
+
+    iput v2, v15, Landroid/app/Instrumentation$ActivityMonitor;->mHits:I
+
+    invoke-virtual {v15}, Landroid/app/Instrumentation$ActivityMonitor;->isBlocking()Z
+
+    move-result v2
+
+    if-eqz v2, :cond_2
+
+    if-ltz p6, :cond_0
+
+    invoke-virtual {v15}, Landroid/app/Instrumentation$ActivityMonitor;->getResult()Landroid/app/Instrumentation$ActivityResult;
+
+    move-result-object v2
+
+    :goto_1
+    monitor-exit v4
+
+    .end local v14           #N:I
+    .end local v15           #am:Landroid/app/Instrumentation$ActivityMonitor;
+    .end local v16           #i:I
+    :goto_2
+    return-object v2
+
+    .restart local v14       #N:I
+    .restart local v15       #am:Landroid/app/Instrumentation$ActivityMonitor;
+    .restart local v16       #i:I
+    :cond_0
+    const/4 v2, 0x0
+
+    goto :goto_1
+
+    :cond_1
+    add-int/lit8 v16, v16, 0x1
+
+    goto :goto_0
+
+    .end local v15           #am:Landroid/app/Instrumentation$ActivityMonitor;
+    :cond_2
+    monitor-exit v4
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    .end local v14           #N:I
+    .end local v16           #i:I
+    :cond_3
+    const/4 v2, 0x0
+
+    :try_start_1
+    move-object/from16 v0, p5
+
+    invoke-virtual {v0, v2}, Landroid/content/Intent;->setAllowFds(Z)V
+
+    invoke-virtual/range {p5 .. p5}, Landroid/content/Intent;->migrateExtraStreamToClipData()Z
+
+    invoke-static {}, Landroid/app/ActivityManagerNative;->getDefault()Landroid/app/IActivityManager;
+
+    move-result-object v2
+
+    invoke-virtual/range {p1 .. p1}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
+
+    move-result-object v4
+
+    move-object/from16 v0, p5
+
+    invoke-virtual {v0, v4}, Landroid/content/Intent;->resolveTypeIfNeeded(Landroid/content/ContentResolver;)Ljava/lang/String;
+
+    move-result-object v5
+
+    if-eqz p4, :cond_4
+
+    move-object/from16 v0, p4
+
+    iget-object v7, v0, Landroid/app/Activity;->mEmbeddedID:Ljava/lang/String;
+
+    :goto_3
+    const/4 v9, 0x0
+
+    const/4 v10, 0x0
+
+    const/4 v11, 0x0
+
+    invoke-virtual/range {p8 .. p8}, Landroid/os/UserHandle;->getIdentifier()I
+
+    move-result v13
+
+    move-object/from16 v4, p5
+
+    move-object/from16 v6, p3
+
+    move/from16 v8, p6
+
+    move-object/from16 v12, p7
+
+    invoke-interface/range {v2 .. v13}, Landroid/app/IActivityManager;->startActivityAsUser(Landroid/app/IApplicationThread;Landroid/content/Intent;Ljava/lang/String;Landroid/os/IBinder;Ljava/lang/String;IILjava/lang/String;Landroid/os/ParcelFileDescriptor;Landroid/os/Bundle;I)I
+
+    move-result v17
+
+    .local v17, result:I
+    move/from16 v0, v17
+
+    move-object/from16 v1, p5
+
+    invoke-static {v0, v1}, Landroid/app/Instrumentation;->checkStartActivityResult(ILjava/lang/Object;)V
+    :try_end_1
+    .catch Landroid/os/RemoteException; {:try_start_1 .. :try_end_1} :catch_0
+
+    .end local v17           #result:I
+    :goto_4
+    const/4 v2, 0x0
+
+    goto :goto_2
+
+    :catchall_0
+    move-exception v2
+
+    :try_start_2
+    monitor-exit v4
+    :try_end_2
+    .catchall {:try_start_2 .. :try_end_2} :catchall_0
+
+    throw v2
+
+    :cond_4
+    const/4 v7, 0x0
+
+    goto :goto_3
+
+    :catch_0
+    move-exception v2
+
+    goto :goto_4
+.end method
+
+.method public execStartActivity(Landroid/content/Context;Landroid/os/IBinder;Landroid/os/IBinder;Landroid/app/Fragment;Landroid/content/Intent;ILandroid/os/Bundle;)Landroid/app/Instrumentation$ActivityResult;
+    .locals 17
+    .parameter "who"
+    .parameter "contextThread"
+    .parameter "token"
+    .parameter "target"
+    .parameter "intent"
+    .parameter "requestCode"
+    .parameter "options"
+
+    .prologue
+    move-object/from16 v0, p0
+
+    move-object/from16 v1, p1
+
+    move-object/from16 v2, p5
+
+    invoke-direct {v0, v1, v2}, Landroid/app/Instrumentation;->checkDynamicPermission(Landroid/content/Context;Landroid/content/Intent;)Z
+
+    move-result v3
+
+    if-nez v3, :cond_baidu_0
+
+    const/4 v2, 0x0
+
+    goto :goto_baidu_0
+
+    :cond_baidu_0
+
+    move-object/from16 v3, p2
+
+    check-cast v3, Landroid/app/IApplicationThread;
+
+    .local v3, whoThread:Landroid/app/IApplicationThread;
+    move-object/from16 v0, p0
+
+    iget-object v2, v0, Landroid/app/Instrumentation;->mActivityMonitors:Ljava/util/List;
+
+    if-eqz v2, :cond_3
+
+    move-object/from16 v0, p0
+
+    iget-object v4, v0, Landroid/app/Instrumentation;->mSync:Ljava/lang/Object;
+
+    monitor-enter v4
+
     :try_start_0
     move-object/from16 v0, p0
 
@@ -1754,14 +2206,13 @@
     :goto_1
     monitor-exit v4
 
-    .line 1475
     .end local v13           #N:I
     .end local v14           #am:Landroid/app/Instrumentation$ActivityMonitor;
     .end local v15           #i:I
     :goto_2
+    :goto_baidu_0
     return-object v2
 
-    .line 1457
     .restart local v13       #N:I
     .restart local v14       #am:Landroid/app/Instrumentation$ActivityMonitor;
     .restart local v15       #i:I
@@ -1816,7 +2267,7 @@
 
     move-object/from16 v0, p4
 
-    iget-object v7, v0, Landroid/app/Activity;->mEmbeddedID:Ljava/lang/String;
+    iget-object v7, v0, Landroid/app/Fragment;->mWho:Ljava/lang/String;
 
     :goto_3
     const/4 v9, 0x0
@@ -1872,459 +2323,6 @@
     goto :goto_3
 
     .line 1473
-    :catch_0
-    move-exception v2
-
-    goto :goto_4
-.end method
-
-.method public execStartActivity(Landroid/content/Context;Landroid/os/IBinder;Landroid/os/IBinder;Landroid/app/Activity;Landroid/content/Intent;ILandroid/os/Bundle;Landroid/os/UserHandle;)Landroid/app/Instrumentation$ActivityResult;
-    .locals 18
-    .parameter "who"
-    .parameter "contextThread"
-    .parameter "token"
-    .parameter "target"
-    .parameter "intent"
-    .parameter "requestCode"
-    .parameter "options"
-    .parameter "user"
-
-    .prologue
-    .line 1623
-    move-object/from16 v3, p2
-
-    check-cast v3, Landroid/app/IApplicationThread;
-
-    .line 1624
-    .local v3, whoThread:Landroid/app/IApplicationThread;
-    move-object/from16 v0, p0
-
-    iget-object v2, v0, Landroid/app/Instrumentation;->mActivityMonitors:Ljava/util/List;
-
-    if-eqz v2, :cond_3
-
-    .line 1625
-    move-object/from16 v0, p0
-
-    iget-object v4, v0, Landroid/app/Instrumentation;->mSync:Ljava/lang/Object;
-
-    monitor-enter v4
-
-    .line 1626
-    :try_start_0
-    move-object/from16 v0, p0
-
-    iget-object v2, v0, Landroid/app/Instrumentation;->mActivityMonitors:Ljava/util/List;
-
-    invoke-interface {v2}, Ljava/util/List;->size()I
-
-    move-result v14
-
-    .line 1627
-    .local v14, N:I
-    const/16 v16, 0x0
-
-    .local v16, i:I
-    :goto_0
-    move/from16 v0, v16
-
-    if-ge v0, v14, :cond_2
-
-    .line 1628
-    move-object/from16 v0, p0
-
-    iget-object v2, v0, Landroid/app/Instrumentation;->mActivityMonitors:Ljava/util/List;
-
-    move/from16 v0, v16
-
-    invoke-interface {v2, v0}, Ljava/util/List;->get(I)Ljava/lang/Object;
-
-    move-result-object v15
-
-    check-cast v15, Landroid/app/Instrumentation$ActivityMonitor;
-
-    .line 1629
-    .local v15, am:Landroid/app/Instrumentation$ActivityMonitor;
-    const/4 v2, 0x0
-
-    move-object/from16 v0, p1
-
-    move-object/from16 v1, p5
-
-    invoke-virtual {v15, v0, v2, v1}, Landroid/app/Instrumentation$ActivityMonitor;->match(Landroid/content/Context;Landroid/app/Activity;Landroid/content/Intent;)Z
-
-    move-result v2
-
-    if-eqz v2, :cond_1
-
-    .line 1630
-    iget v2, v15, Landroid/app/Instrumentation$ActivityMonitor;->mHits:I
-
-    add-int/lit8 v2, v2, 0x1
-
-    iput v2, v15, Landroid/app/Instrumentation$ActivityMonitor;->mHits:I
-
-    .line 1631
-    invoke-virtual {v15}, Landroid/app/Instrumentation$ActivityMonitor;->isBlocking()Z
-
-    move-result v2
-
-    if-eqz v2, :cond_2
-
-    .line 1632
-    if-ltz p6, :cond_0
-
-    invoke-virtual {v15}, Landroid/app/Instrumentation$ActivityMonitor;->getResult()Landroid/app/Instrumentation$ActivityResult;
-
-    move-result-object v2
-
-    :goto_1
-    monitor-exit v4
-
-    .line 1650
-    .end local v14           #N:I
-    .end local v15           #am:Landroid/app/Instrumentation$ActivityMonitor;
-    .end local v16           #i:I
-    :goto_2
-    return-object v2
-
-    .line 1632
-    .restart local v14       #N:I
-    .restart local v15       #am:Landroid/app/Instrumentation$ActivityMonitor;
-    .restart local v16       #i:I
-    :cond_0
-    const/4 v2, 0x0
-
-    goto :goto_1
-
-    .line 1627
-    :cond_1
-    add-int/lit8 v16, v16, 0x1
-
-    goto :goto_0
-
-    .line 1637
-    .end local v15           #am:Landroid/app/Instrumentation$ActivityMonitor;
-    :cond_2
-    monitor-exit v4
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
-
-    .line 1640
-    .end local v14           #N:I
-    .end local v16           #i:I
-    :cond_3
-    const/4 v2, 0x0
-
-    :try_start_1
-    move-object/from16 v0, p5
-
-    invoke-virtual {v0, v2}, Landroid/content/Intent;->setAllowFds(Z)V
-
-    .line 1641
-    invoke-virtual/range {p5 .. p5}, Landroid/content/Intent;->migrateExtraStreamToClipData()Z
-
-    .line 1642
-    invoke-static {}, Landroid/app/ActivityManagerNative;->getDefault()Landroid/app/IActivityManager;
-
-    move-result-object v2
-
-    invoke-virtual/range {p1 .. p1}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
-
-    move-result-object v4
-
-    move-object/from16 v0, p5
-
-    invoke-virtual {v0, v4}, Landroid/content/Intent;->resolveTypeIfNeeded(Landroid/content/ContentResolver;)Ljava/lang/String;
-
-    move-result-object v5
-
-    if-eqz p4, :cond_4
-
-    move-object/from16 v0, p4
-
-    iget-object v7, v0, Landroid/app/Activity;->mEmbeddedID:Ljava/lang/String;
-
-    :goto_3
-    const/4 v9, 0x0
-
-    const/4 v10, 0x0
-
-    const/4 v11, 0x0
-
-    invoke-virtual/range {p8 .. p8}, Landroid/os/UserHandle;->getIdentifier()I
-
-    move-result v13
-
-    move-object/from16 v4, p5
-
-    move-object/from16 v6, p3
-
-    move/from16 v8, p6
-
-    move-object/from16 v12, p7
-
-    invoke-interface/range {v2 .. v13}, Landroid/app/IActivityManager;->startActivityAsUser(Landroid/app/IApplicationThread;Landroid/content/Intent;Ljava/lang/String;Landroid/os/IBinder;Ljava/lang/String;IILjava/lang/String;Landroid/os/ParcelFileDescriptor;Landroid/os/Bundle;I)I
-
-    move-result v17
-
-    .line 1647
-    .local v17, result:I
-    move/from16 v0, v17
-
-    move-object/from16 v1, p5
-
-    invoke-static {v0, v1}, Landroid/app/Instrumentation;->checkStartActivityResult(ILjava/lang/Object;)V
-    :try_end_1
-    .catch Landroid/os/RemoteException; {:try_start_1 .. :try_end_1} :catch_0
-
-    .line 1650
-    .end local v17           #result:I
-    :goto_4
-    const/4 v2, 0x0
-
-    goto :goto_2
-
-    .line 1637
-    :catchall_0
-    move-exception v2
-
-    :try_start_2
-    monitor-exit v4
-    :try_end_2
-    .catchall {:try_start_2 .. :try_end_2} :catchall_0
-
-    throw v2
-
-    .line 1642
-    :cond_4
-    const/4 v7, 0x0
-
-    goto :goto_3
-
-    .line 1648
-    :catch_0
-    move-exception v2
-
-    goto :goto_4
-.end method
-
-.method public execStartActivity(Landroid/content/Context;Landroid/os/IBinder;Landroid/os/IBinder;Landroid/app/Fragment;Landroid/content/Intent;ILandroid/os/Bundle;)Landroid/app/Instrumentation$ActivityResult;
-    .locals 17
-    .parameter "who"
-    .parameter "contextThread"
-    .parameter "token"
-    .parameter "target"
-    .parameter "intent"
-    .parameter "requestCode"
-    .parameter "options"
-
-    .prologue
-    .line 1563
-    move-object/from16 v3, p2
-
-    check-cast v3, Landroid/app/IApplicationThread;
-
-    .line 1564
-    .local v3, whoThread:Landroid/app/IApplicationThread;
-    move-object/from16 v0, p0
-
-    iget-object v2, v0, Landroid/app/Instrumentation;->mActivityMonitors:Ljava/util/List;
-
-    if-eqz v2, :cond_3
-
-    .line 1565
-    move-object/from16 v0, p0
-
-    iget-object v4, v0, Landroid/app/Instrumentation;->mSync:Ljava/lang/Object;
-
-    monitor-enter v4
-
-    .line 1566
-    :try_start_0
-    move-object/from16 v0, p0
-
-    iget-object v2, v0, Landroid/app/Instrumentation;->mActivityMonitors:Ljava/util/List;
-
-    invoke-interface {v2}, Ljava/util/List;->size()I
-
-    move-result v13
-
-    .line 1567
-    .local v13, N:I
-    const/4 v15, 0x0
-
-    .local v15, i:I
-    :goto_0
-    if-ge v15, v13, :cond_2
-
-    .line 1568
-    move-object/from16 v0, p0
-
-    iget-object v2, v0, Landroid/app/Instrumentation;->mActivityMonitors:Ljava/util/List;
-
-    invoke-interface {v2, v15}, Ljava/util/List;->get(I)Ljava/lang/Object;
-
-    move-result-object v14
-
-    check-cast v14, Landroid/app/Instrumentation$ActivityMonitor;
-
-    .line 1569
-    .local v14, am:Landroid/app/Instrumentation$ActivityMonitor;
-    const/4 v2, 0x0
-
-    move-object/from16 v0, p1
-
-    move-object/from16 v1, p5
-
-    invoke-virtual {v14, v0, v2, v1}, Landroid/app/Instrumentation$ActivityMonitor;->match(Landroid/content/Context;Landroid/app/Activity;Landroid/content/Intent;)Z
-
-    move-result v2
-
-    if-eqz v2, :cond_1
-
-    .line 1570
-    iget v2, v14, Landroid/app/Instrumentation$ActivityMonitor;->mHits:I
-
-    add-int/lit8 v2, v2, 0x1
-
-    iput v2, v14, Landroid/app/Instrumentation$ActivityMonitor;->mHits:I
-
-    .line 1571
-    invoke-virtual {v14}, Landroid/app/Instrumentation$ActivityMonitor;->isBlocking()Z
-
-    move-result v2
-
-    if-eqz v2, :cond_2
-
-    .line 1572
-    if-ltz p6, :cond_0
-
-    invoke-virtual {v14}, Landroid/app/Instrumentation$ActivityMonitor;->getResult()Landroid/app/Instrumentation$ActivityResult;
-
-    move-result-object v2
-
-    :goto_1
-    monitor-exit v4
-
-    .line 1590
-    .end local v13           #N:I
-    .end local v14           #am:Landroid/app/Instrumentation$ActivityMonitor;
-    .end local v15           #i:I
-    :goto_2
-    return-object v2
-
-    .line 1572
-    .restart local v13       #N:I
-    .restart local v14       #am:Landroid/app/Instrumentation$ActivityMonitor;
-    .restart local v15       #i:I
-    :cond_0
-    const/4 v2, 0x0
-
-    goto :goto_1
-
-    .line 1567
-    :cond_1
-    add-int/lit8 v15, v15, 0x1
-
-    goto :goto_0
-
-    .line 1577
-    .end local v14           #am:Landroid/app/Instrumentation$ActivityMonitor;
-    :cond_2
-    monitor-exit v4
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
-
-    .line 1580
-    .end local v13           #N:I
-    .end local v15           #i:I
-    :cond_3
-    const/4 v2, 0x0
-
-    :try_start_1
-    move-object/from16 v0, p5
-
-    invoke-virtual {v0, v2}, Landroid/content/Intent;->setAllowFds(Z)V
-
-    .line 1581
-    invoke-virtual/range {p5 .. p5}, Landroid/content/Intent;->migrateExtraStreamToClipData()Z
-
-    .line 1582
-    invoke-static {}, Landroid/app/ActivityManagerNative;->getDefault()Landroid/app/IActivityManager;
-
-    move-result-object v2
-
-    invoke-virtual/range {p1 .. p1}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
-
-    move-result-object v4
-
-    move-object/from16 v0, p5
-
-    invoke-virtual {v0, v4}, Landroid/content/Intent;->resolveTypeIfNeeded(Landroid/content/ContentResolver;)Ljava/lang/String;
-
-    move-result-object v5
-
-    if-eqz p4, :cond_4
-
-    move-object/from16 v0, p4
-
-    iget-object v7, v0, Landroid/app/Fragment;->mWho:Ljava/lang/String;
-
-    :goto_3
-    const/4 v9, 0x0
-
-    const/4 v10, 0x0
-
-    const/4 v11, 0x0
-
-    move-object/from16 v4, p5
-
-    move-object/from16 v6, p3
-
-    move/from16 v8, p6
-
-    move-object/from16 v12, p7
-
-    invoke-interface/range {v2 .. v12}, Landroid/app/IActivityManager;->startActivity(Landroid/app/IApplicationThread;Landroid/content/Intent;Ljava/lang/String;Landroid/os/IBinder;Ljava/lang/String;IILjava/lang/String;Landroid/os/ParcelFileDescriptor;Landroid/os/Bundle;)I
-
-    move-result v16
-
-    .line 1587
-    .local v16, result:I
-    move/from16 v0, v16
-
-    move-object/from16 v1, p5
-
-    invoke-static {v0, v1}, Landroid/app/Instrumentation;->checkStartActivityResult(ILjava/lang/Object;)V
-    :try_end_1
-    .catch Landroid/os/RemoteException; {:try_start_1 .. :try_end_1} :catch_0
-
-    .line 1590
-    .end local v16           #result:I
-    :goto_4
-    const/4 v2, 0x0
-
-    goto :goto_2
-
-    .line 1577
-    :catchall_0
-    move-exception v2
-
-    :try_start_2
-    monitor-exit v4
-    :try_end_2
-    .catchall {:try_start_2 .. :try_end_2} :catchall_0
-
-    throw v2
-
-    .line 1582
-    :cond_4
-    const/4 v7, 0x0
-
-    goto :goto_3
-
-    .line 1588
     :catch_0
     move-exception v2
 
@@ -3925,4 +3923,71 @@
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v1
+.end method
+
+.method private checkDynamicPermission(Landroid/content/Context;Landroid/content/Intent;)Z
+    .locals 2
+    .parameter "context"
+    .parameter "intent"
+
+    .prologue
+    invoke-static {p1}, Lcom/baidu/server/dp/DynamicPermissionManager;->getInstance(Landroid/content/Context;)Lcom/baidu/server/dp/DynamicPermissionManager;
+
+    move-result-object v0
+
+    .local v0, dpm:Lcom/baidu/server/dp/DynamicPermissionManager;
+    invoke-virtual {v0, p2}, Lcom/baidu/server/dp/DynamicPermissionManager;->checkCallPermission(Landroid/content/Intent;)I
+
+    move-result v1
+
+    if-nez v1, :cond_0
+
+    const/4 v1, 0x1
+
+    :goto_0
+    return v1
+
+    :cond_0
+    const/4 v1, 0x0
+
+    goto :goto_0
+.end method
+
+.method private checkDynamicPermission(Landroid/content/Context;[Landroid/content/Intent;)Z
+    .locals 5
+    .parameter "context"
+    .parameter "intents"
+
+    .prologue
+    const/4 v3, 0x1
+
+    const/4 v2, 0x0
+
+    invoke-static {p1}, Lcom/baidu/server/dp/DynamicPermissionManager;->getInstance(Landroid/content/Context;)Lcom/baidu/server/dp/DynamicPermissionManager;
+
+    move-result-object v0
+
+    .local v0, dpm:Lcom/baidu/server/dp/DynamicPermissionManager;
+    new-array v1, v3, [[Landroid/content/Intent;
+
+    .local v1, intentsContainer:[[Landroid/content/Intent;
+    invoke-virtual {v0, p2, v1}, Lcom/baidu/server/dp/DynamicPermissionManager;->checkCallPermission([Landroid/content/Intent;[[Landroid/content/Intent;)I
+
+    move-result v4
+
+    if-eqz v4, :cond_0
+
+    aget-object p2, v1, v2
+
+    array-length v4, p2
+
+    if-nez v4, :cond_0
+
+    :goto_0
+    return v2
+
+    :cond_0
+    move v2, v3
+
+    goto :goto_0
 .end method

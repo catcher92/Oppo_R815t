@@ -11,6 +11,7 @@
         Lcom/android/server/ConnectivityService$SettingsObserver;,
         Lcom/android/server/ConnectivityService$InternalHandler;,
         Lcom/android/server/ConnectivityService$NetworkStateTrackerHandler;,
+        Lcom/android/server/ConnectivityService$BaiduInjector;,
         Lcom/android/server/ConnectivityService$FeatureUser;,
         Lcom/android/server/ConnectivityService$DefaultNetworkFactory;,
         Lcom/android/server/ConnectivityService$NetworkFactory;,
@@ -619,7 +620,7 @@
 
     move-result-object v2
 
-    const v3, 0x104001f
+    const v3, #android:string@config_default_dns_server#t
 
     invoke-virtual {v2, v3}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -744,7 +745,7 @@
 
     move-result-object v2
 
-    const v3, 0x10e0009
+    const v3, #android:integer@config_networkTransitionTimeout#t
 
     invoke-virtual {v2, v3}, Landroid/content/res/Resources;->getInteger(I)I
 
@@ -804,7 +805,7 @@
 
     move-result-object v2
 
-    const v3, 0x1070017
+    const v3, #android:array@radioAttributes#t
 
     invoke-virtual {v2, v3}, Landroid/content/res/Resources;->getStringArray(I)[Ljava/lang/String;
 
@@ -1018,7 +1019,7 @@
 
     move-result-object v2
 
-    const v3, 0x1070015
+    const v3, #android:array@networkAttributes#t
 
     invoke-virtual {v2, v3}, Landroid/content/res/Resources;->getStringArray(I)[Ljava/lang/String;
 
@@ -1245,7 +1246,7 @@
 
     move-result-object v2
 
-    const v3, 0x1070016
+    const v3, #android:array@config_protectedNetworks#t
 
     invoke-virtual {v2, v3}, Landroid/content/res/Resources;->getIntArray(I)[I
 
@@ -6884,6 +6885,10 @@
     const/4 v15, 0x1
 
     invoke-static {v13, v14, v15}, Landroid/provider/Settings$Secure;->putInt(Landroid/content/ContentResolver;Ljava/lang/String;I)Z
+
+    move-object/from16 v0, p0
+
+    invoke-static {v0, v10}, Lcom/android/server/ConnectivityService$BaiduInjector;->setPreferSimSetting(Lcom/android/server/ConnectivityService;Ljava/lang/Long;)V
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
@@ -8317,7 +8322,7 @@
 
     move-result-object v17
 
-    const v18, 0x111003f
+    const v18, #android:bool@config_wimaxEnabled#t
 
     invoke-virtual/range {v17 .. v18}, Landroid/content/res/Resources;->getBoolean(I)Z
 
@@ -8333,7 +8338,7 @@
 
     move-result-object v17
 
-    const v18, 0x1040027
+    const v18, #android:string@config_wimaxServiceJarLocation#t
 
     invoke-virtual/range {v17 .. v18}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -8345,7 +8350,7 @@
 
     move-result-object v17
 
-    const v18, 0x1040028
+    const v18, #android:string@config_wimaxNativeLibLocation#t
 
     invoke-virtual/range {v17 .. v18}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -8357,7 +8362,7 @@
 
     move-result-object v17
 
-    const v18, 0x1040029
+    const v18, #android:string@config_wimaxManagerClassname#t
 
     invoke-virtual/range {v17 .. v18}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -8369,7 +8374,7 @@
 
     move-result-object v17
 
-    const v18, 0x104002a
+    const v18, #android:string@config_wimaxServiceClassname#t
 
     invoke-virtual/range {v17 .. v18}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -8381,7 +8386,7 @@
 
     move-result-object v17
 
-    const v18, 0x104002b
+    const v18, #android:string@config_wimaxStateTrackerClassname#t
 
     invoke-virtual/range {v17 .. v18}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -16423,6 +16428,10 @@
 
     .line 1832
     :goto_1
+    invoke-static {p0, v0}, Lcom/android/server/ConnectivityService$BaiduInjector;->getDefaultSlot(Lcom/android/server/ConnectivityService;I)I
+
+    move-result v0
+
     iget-object v3, p0, Lcom/android/server/ConnectivityService;->mHandler:Lcom/android/server/ConnectivityService$InternalHandler;
 
     iget-object v4, p0, Lcom/android/server/ConnectivityService;->mHandler:Lcom/android/server/ConnectivityService$InternalHandler;
@@ -16663,6 +16672,8 @@
     const-string v3, "mobile_data"
 
     invoke-static {v2, v3, v6}, Landroid/provider/Settings$Secure;->putInt(Landroid/content/ContentResolver;Ljava/lang/String;I)Z
+
+    invoke-static {p0, v1}, Lcom/android/server/ConnectivityService$BaiduInjector;->setPreferSimSetting(Lcom/android/server/ConnectivityService;Ljava/lang/Long;)V
 
     .line 4451
     :goto_0
@@ -19954,4 +19965,16 @@
     move-result-object v0
 
     goto :goto_0
+.end method
+
+.method static synthetic access$invoke-getITelephony-c3205c(Lcom/android/server/ConnectivityService;)Lcom/android/internal/telephony/ITelephony;
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    invoke-direct {p0}, Lcom/android/server/ConnectivityService;->getITelephony()Lcom/android/internal/telephony/ITelephony;
+
+    move-result-object v0
+
+    return-object v0
 .end method

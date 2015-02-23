@@ -439,7 +439,7 @@
 
 .field private mVolumeControlStream:I
 
-.field private mVolumePanel:Lcom/oppo/view/OppoVolumePanel;
+.field private mVolumePanel:Landroid/view/VolumePanel;
 
 
 # direct methods
@@ -1511,7 +1511,7 @@
 
     move-result-object v2
 
-    const v3, 0x1110030
+    const v3, #android:bool@config_voice_capable#t
 
     invoke-virtual {v2, v3}, Landroid/content/res/Resources;->getBoolean(I)Z
 
@@ -1611,7 +1611,7 @@
 
     move-result-object v2
 
-    const v3, 0x10e0004
+    const v3, #android:integer@config_soundEffectVolumeDb#t
 
     invoke-virtual {v2, v3}, Landroid/content/res/Resources;->getInteger(I)I
 
@@ -1619,18 +1619,17 @@
 
     sput v2, Landroid/media/AudioService;->sSoundEffectVolumeDb:I
 
-    .line 605
-    new-instance v2, Lcom/oppo/view/OppoVolumePanel;
+    new-instance v2, Landroid/view/BaiduVolumePanel;
 
     move-object/from16 v0, p1
 
     move-object/from16 v1, p0
 
-    invoke-direct {v2, v0, v1}, Lcom/oppo/view/OppoVolumePanel;-><init>(Landroid/content/Context;Landroid/media/AudioService;)V
+    invoke-direct {v2, v0, v1}, Landroid/view/BaiduVolumePanel;-><init>(Landroid/content/Context;Landroid/media/AudioService;)V
 
     move-object/from16 v0, p0
 
-    iput-object v2, v0, Landroid/media/AudioService;->mVolumePanel:Lcom/oppo/view/OppoVolumePanel;
+    iput-object v2, v0, Landroid/media/AudioService;->mVolumePanel:Landroid/view/VolumePanel;
 
     .line 608
     const/4 v2, 0x0
@@ -1658,7 +1657,7 @@
 
     move-result-object v2
 
-    const v3, 0x111004a
+    const v3, #android:bool@config_camera_sound_forced#t
 
     invoke-virtual {v2, v3}, Landroid/content/res/Resources;->getBoolean(I)Z
 
@@ -1984,7 +1983,7 @@
 
     move-result-object v2
 
-    const v3, 0x1110010
+    const v3, #android:bool@config_useMasterVolume#t
 
     invoke-virtual {v2, v3}, Landroid/content/res/Resources;->getBoolean(I)Z
 
@@ -2002,7 +2001,7 @@
 
     move-result-object v2
 
-    const v3, 0x1070014
+    const v3, #android:array@config_masterVolumeRamp#t
 
     invoke-virtual {v2, v3}, Landroid/content/res/Resources;->getIntArray(I)[I
 
@@ -3520,9 +3519,9 @@
 
     .line 5914
     :cond_1
-    iget-object v2, p0, Landroid/media/AudioService;->mVolumePanel:Lcom/oppo/view/OppoVolumePanel;
+    iget-object v2, p0, Landroid/media/AudioService;->mVolumePanel:Landroid/view/VolumePanel;
 
-    invoke-virtual {v2, p1, p3}, Lcom/oppo/view/OppoVolumePanel;->postRemoteVolumeChanged(II)V
+    invoke-virtual {v2, p1, p3}, Landroid/view/VolumePanel;->postRemoteVolumeChanged(II)V
 
     goto :goto_0
 
@@ -4041,9 +4040,9 @@
     if-le p2, v0, :cond_0
 
     .line 6253
-    iget-object v0, p0, Landroid/media/AudioService;->mVolumePanel:Lcom/oppo/view/OppoVolumePanel;
+    iget-object v0, p0, Landroid/media/AudioService;->mVolumePanel:Landroid/view/VolumePanel;
 
-    invoke-virtual {v0}, Lcom/oppo/view/OppoVolumePanel;->postDisplaySafeVolumeWarning()V
+    invoke-virtual {v0}, Landroid/view/VolumePanel;->postDisplaySafeVolumeWarning()V
 
     .line 6254
     const/4 v0, 0x0
@@ -7720,7 +7719,7 @@
 
     move-result-object v0
 
-    const v1, 0x111004a
+    const v1, #android:bool@config_camera_sound_forced#t
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getBoolean(I)Z
 
@@ -9422,9 +9421,9 @@
     iput v0, p0, Landroid/media/AudioService;->mMusicActiveMs:I
 
     .line 2490
-    iget-object v0, p0, Landroid/media/AudioService;->mVolumePanel:Lcom/oppo/view/OppoVolumePanel;
+    iget-object v0, p0, Landroid/media/AudioService;->mVolumePanel:Landroid/view/VolumePanel;
 
-    invoke-virtual {v0}, Lcom/oppo/view/OppoVolumePanel;->postDisplaySafeVolumeWarning()V
+    invoke-virtual {v0}, Landroid/view/VolumePanel;->postDisplaySafeVolumeWarning()V
 
     .line 2495
     .end local v7           #device:I
@@ -9490,7 +9489,7 @@
 
     move-result-object v2
 
-    const v4, 0x10e0039
+    const v4, #android:integer@config_safe_media_volume_index#t
 
     invoke-virtual {v2, v4}, Landroid/content/res/Resources;->getInteger(I)I
 
@@ -9694,9 +9693,9 @@
     iput p3, v2, Landroid/media/AudioService$RemotePlaybackState;->mVolume:I
 
     .line 5778
-    iget-object v2, p0, Landroid/media/AudioService;->mVolumePanel:Lcom/oppo/view/OppoVolumePanel;
+    iget-object v2, p0, Landroid/media/AudioService;->mVolumePanel:Landroid/view/VolumePanel;
 
-    invoke-virtual {v2}, Lcom/oppo/view/OppoVolumePanel;->postHasNewRemotePlaybackInfo()V
+    invoke-virtual {v2}, Landroid/view/VolumePanel;->postHasNewRemotePlaybackInfo()V
 
     .line 5780
     :cond_1
@@ -9739,9 +9738,9 @@
     iput p3, v2, Landroid/media/AudioService$RemotePlaybackState;->mVolumeMax:I
 
     .line 5787
-    iget-object v2, p0, Landroid/media/AudioService;->mVolumePanel:Lcom/oppo/view/OppoVolumePanel;
+    iget-object v2, p0, Landroid/media/AudioService;->mVolumePanel:Landroid/view/VolumePanel;
 
-    invoke-virtual {v2}, Lcom/oppo/view/OppoVolumePanel;->postHasNewRemotePlaybackInfo()V
+    invoke-virtual {v2}, Landroid/view/VolumePanel;->postHasNewRemotePlaybackInfo()V
 
     .line 5789
     :cond_2
@@ -9784,9 +9783,9 @@
     iput p3, v2, Landroid/media/AudioService$RemotePlaybackState;->mVolumeHandling:I
 
     .line 5796
-    iget-object v2, p0, Landroid/media/AudioService;->mVolumePanel:Lcom/oppo/view/OppoVolumePanel;
+    iget-object v2, p0, Landroid/media/AudioService;->mVolumePanel:Landroid/view/VolumePanel;
 
-    invoke-virtual {v2}, Lcom/oppo/view/OppoVolumePanel;->postHasNewRemotePlaybackInfo()V
+    invoke-virtual {v2}, Landroid/view/VolumePanel;->postHasNewRemotePlaybackInfo()V
 
     .line 5798
     :cond_3
@@ -10170,9 +10169,9 @@
     iput-boolean v0, p0, Landroid/media/AudioService;->mHasRemotePlayback:Z
 
     .line 6018
-    iget-object v3, p0, Landroid/media/AudioService;->mVolumePanel:Lcom/oppo/view/OppoVolumePanel;
+    iget-object v3, p0, Landroid/media/AudioService;->mVolumePanel:Landroid/view/VolumePanel;
 
-    invoke-virtual {v3, v0}, Lcom/oppo/view/OppoVolumePanel;->postRemoteSliderVisibility(Z)V
+    invoke-virtual {v3, v0}, Landroid/view/VolumePanel;->postRemoteSliderVisibility(Z)V
 
     .line 6020
     :cond_2
@@ -12792,9 +12791,9 @@
 
     .prologue
     .line 1273
-    iget-object v0, p0, Landroid/media/AudioService;->mVolumePanel:Lcom/oppo/view/OppoVolumePanel;
+    iget-object v0, p0, Landroid/media/AudioService;->mVolumePanel:Landroid/view/VolumePanel;
 
-    invoke-virtual {v0, p2}, Lcom/oppo/view/OppoVolumePanel;->postMasterMuteChanged(I)V
+    invoke-virtual {v0, p2}, Landroid/view/VolumePanel;->postMasterMuteChanged(I)V
 
     .line 1274
     invoke-direct {p0, p1}, Landroid/media/AudioService;->broadcastMasterMuteStatus(Z)V
@@ -12811,9 +12810,9 @@
 
     .prologue
     .line 1263
-    iget-object v1, p0, Landroid/media/AudioService;->mVolumePanel:Lcom/oppo/view/OppoVolumePanel;
+    iget-object v1, p0, Landroid/media/AudioService;->mVolumePanel:Landroid/view/VolumePanel;
 
-    invoke-virtual {v1, p1}, Lcom/oppo/view/OppoVolumePanel;->postMasterVolumeChanged(I)V
+    invoke-virtual {v1, p1}, Landroid/view/VolumePanel;->postMasterVolumeChanged(I)V
 
     .line 1265
     new-instance v0, Landroid/content/Intent;
@@ -13004,9 +13003,9 @@
 
     .line 1236
     :cond_0
-    iget-object v1, p0, Landroid/media/AudioService;->mVolumePanel:Lcom/oppo/view/OppoVolumePanel;
+    iget-object v1, p0, Landroid/media/AudioService;->mVolumePanel:Landroid/view/VolumePanel;
 
-    invoke-virtual {v1, p1, p4}, Lcom/oppo/view/OppoVolumePanel;->postVolumeChanged(II)V
+    invoke-virtual {v1, p1, p4}, Landroid/view/VolumePanel;->postVolumeChanged(II)V
 
     .line 1238
     and-int/lit8 v1, p4, 0x20
@@ -14032,27 +14031,22 @@
 
     invoke-direct {v3, v4}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
-    .line 4849
     .restart local v3       #voiceIntent:Landroid/content/Intent;
     :goto_1
     if-eqz p1, :cond_0
 
-    .line 4850
     iget-object v4, p0, Landroid/media/AudioService;->mMediaEventWakeLock:Landroid/os/PowerManager$WakeLock;
 
     invoke-virtual {v4}, Landroid/os/PowerManager$WakeLock;->acquire()V
 
-    .line 4853
     :cond_0
     if-eqz v3, :cond_1
 
-    .line 4854
-    const/high16 v4, 0x1080
+    const/high16 v4, #android:drawable@alert_dark_frame#h0
 
     :try_start_0
     invoke-virtual {v3, v4}, Landroid/content/Intent;->setFlags(I)Landroid/content/Intent;
 
-    .line 4856
     iget-object v4, p0, Landroid/media/AudioService;->mContext:Landroid/content/Context;
 
     invoke-virtual {v4, v3}, Landroid/content/Context;->startActivity(Landroid/content/Intent;)V
@@ -21762,3 +21756,22 @@
 
     goto :goto_0
 .end method
+
+# Remove the first '#' if you want to enable this method. It might be invoked from codes of BOSP.
+#.method static synthetic access$iget-mDockState-33e160(Landroid/media/AudioService;)I
+#    .locals 1
+#    .parameter "x0"
+#    .prologue
+#    iget v0, p0, Landroid/media/AudioService;->mDockState:I
+#    return v0
+#.end method
+
+# Remove the first '#' if you want to enable this method. It might be invoked from codes of BOSP.
+#.method static synthetic access$iput-mDockState-78a63a(Landroid/media/AudioService;I)I
+#    .locals 0
+#    .parameter "x0"
+#    .parameter "x1"
+#    .prologue
+#    iput p1, p0, Landroid/media/AudioService;->mDockState:I
+#    return p1
+#.end method
