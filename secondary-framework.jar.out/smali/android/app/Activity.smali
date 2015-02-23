@@ -503,9 +503,9 @@
 
     .line 1928
     :cond_1
-    invoke-static {p0}, Lcom/android/internal/app/OppoActionBarImpl;->newInstance(Landroid/app/Activity;)Lcom/android/internal/app/ActionBarImpl;
+    new-instance v1, Lcom/android/internal/app/ActionBarImpl;
 
-    move-result-object v1
+    invoke-direct {v1, p0}, Lcom/android/internal/app/ActionBarImpl;-><init>(Landroid/app/Activity;)V
 
     iput-object v1, p0, Landroid/app/Activity;->mActionBar:Lcom/android/internal/app/ActionBarImpl;
 
