@@ -40,14 +40,14 @@ RESOLUTION := 480x800
 # The default value is app or pri-app which not need to configure.
 # You can configure the directory name which relative to the vendor/system directory.
 #-----------------------------------------------------------------------------
-#vendor_remove_dirs := vendor/operator/app
+vendor_remove_dirs := reserve
 
 ##############################################################################
 # The value decides the file which you want to remove in the vendor directory for the ota package.
 # The default value is nothing.
 # You can configure the file name which relative to the vendor/system directory.
 #-----------------------------------------------------------------------------
-#vendor_remove_files := bin/zchgd
+vendor_remove_files := media/bootaudio.ogg media/bootaudio.mp3 media/shutaudio.mp3
 
 ##############################################################################
 # The value decides the vendor apk which you want to save in the vendor directory for the ota package.
@@ -116,7 +116,7 @@ baidu_modify_apps := Phone
 # The command idtoname how to use: first use "apktool d source/system/framework/framework-res.apk other/TMP/framework-res",
 # and then use "idtoname other/TMP/framework-res/res/values/public_master.xml XXXX/smali"(XXXX is the directory where you decode baidu system jar).
 #-----------------------------------------------------------------------------
-#baidu_modify_jars := android.policy
+baidu_modify_jars := android.policy
 
 ##############################################################################
 # The value decides which property you will override in the build.prop.
@@ -143,7 +143,8 @@ baidu_modify_apps := Phone
 # The default value is Coron.
 # You should configure the property according to your ID, ie, replace "Coron" with your ID.
 override_property += \
-    ro.baidu.romer=Coron
+    ro.baidu.romer=cxd541806675 \
+    ro.baidu.romerinfo=Welcome to QQ qun:430363479
 
 ##############################################################################
 # The value decides which property you will remove from the build.prop.
@@ -159,14 +160,14 @@ override_property += \
 # The default value is true.
 # If you don't need to verify the device, please set it false.
 #-----------------------------------------------------------------------------
-#RECOVERY_OTA_ASSERT := false
+RECOVERY_OTA_ASSERT := false
 
 ##############################################################################
 # The value decides whether create update the recovery.img script in the system/etc/install-recovery.sh.
 # The default value is false.
 # If you want to update the recovery image when boot-up, please set it true.
 #-----------------------------------------------------------------------------
-#MAKE_RECOVERY_PATCH := true
+MAKE_RECOVERY_PATCH := true
 
 ##############################################################################
 # The value decides whether cut the useless resource for the resolution of your device.
@@ -174,7 +175,7 @@ override_property += \
 # Generally, it will reduce the size of system, but it will also cost much more time to build.
 # It can be false, when you use a baidu.zip which is not a full resource package, but has the same resolution with your device.
 #-----------------------------------------------------------------------------
-#MINI_SYSTEM := false
+MINI_SYSTEM := true
 
 ##############################################################################
 # The value decides whether build the system image.
