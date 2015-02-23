@@ -394,7 +394,7 @@
 
     .prologue
     .line 158
-    const/4 v0, 0x1
+    const/4 v0, 0x0
 
     invoke-virtual {p0, p1, v0}, Landroid/content/pm/PackageItemInfo;->loadIcon(Landroid/content/pm/PackageManager;Z)Landroid/graphics/drawable/Drawable;
 
