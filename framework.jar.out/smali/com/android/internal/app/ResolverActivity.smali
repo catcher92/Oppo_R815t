@@ -662,7 +662,7 @@
     .prologue
     .line 126
     .local p5, rList:Ljava/util/List;,"Ljava/util/List<Landroid/content/pm/ResolveInfo;>;"
-    const v1, 0xc03001a
+    const v1, #style@Theme.DeviceDefault.Light.Dialog.Alert#t
 
     invoke-virtual {p0, v1}, Lcom/android/internal/app/ResolverActivity;->setTheme(I)V
 
