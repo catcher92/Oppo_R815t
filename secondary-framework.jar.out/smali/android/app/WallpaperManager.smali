@@ -616,7 +616,7 @@
 
     .prologue
     .line 841
-    const v0, 0xc080099
+    const v0, #android:drawable@default_wallpaper#t
 
     invoke-virtual {p0, v0}, Landroid/app/WallpaperManager;->setResource(I)V
 

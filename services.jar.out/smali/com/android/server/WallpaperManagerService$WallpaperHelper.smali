@@ -60,7 +60,7 @@
     iput-object v0, p0, Lcom/android/server/WallpaperManagerService$WallpaperHelper;->MTK_PLATFORM_PROP:Ljava/lang/String;
 
     .line 118
-    const v0, 0xc080099
+    const v0, #android:drawable@default_wallpaper#t
 
     iput v0, p0, Lcom/android/server/WallpaperManagerService$WallpaperHelper;->DEFAULT_WALLPAPER_RES_ID:I
 
@@ -587,7 +587,7 @@
 
     .line 146
     .local v3, r:Landroid/content/res/Resources;
-    const v5, 0xc080099
+    const v5, #android:drawable@default_wallpaper#t
 
     invoke-static {v3, v5, v2}, Landroid/graphics/BitmapFactory;->decodeResource(Landroid/content/res/Resources;ILandroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
 
