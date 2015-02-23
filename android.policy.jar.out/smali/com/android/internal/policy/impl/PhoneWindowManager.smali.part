@@ -1,0 +1,13 @@
+.method public rm_add_StatusBarRunnable(I)V
+    .locals 0
+    .parameter "type"
+    .annotation build Landroid/annotation/OppoHook;
+        level = .enum Landroid/annotation/OppoHook$OppoHookType;->NEW_METHOD:Landroid/annotation/OppoHook$OppoHookType;
+        note = "hejiamiao add for pull down status bar when full screen"
+        property = .enum Landroid/annotation/OppoHook$OppoRomType;->ROM:Landroid/annotation/OppoHook$OppoRomType;
+    .end annotation
+
+    .prologue
+    .line 1989
+    return-void
+.end method
