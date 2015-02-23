@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:paddingRight="?scrollbarSize" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="?listPreferredItemHeight"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_gravity="center" android:id="@id/icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/oppo_list_round_item_icon_margin" android:layout_marginRight="@dimen/oppo_list_round_item_icon_text_margin" />
+    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/oppo_list_round_item_icon_margin" android:layout_marginTop="6.0dip" android:layout_marginRight="@dimen/oppo_list_round_item_icon_margin" android:layout_marginBottom="6.0dip" android:layout_weight="1.0">
+        <TextView android:textColor="#ff97a0ad" android:ellipsize="marquee" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="2" android:singleLine="false" style="@android:style/OppoListView_text_large_style" />
+        <TextView android:textColor="#ff515559" android:id="@id/summary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="2" android:layout_below="@id/title" android:layout_alignLeft="@id/title" style="@android:style/OppoListView_text_small_style" />
+    </RelativeLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/widget_frame" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+</LinearLayout>

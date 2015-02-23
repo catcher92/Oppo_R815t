@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:background="@drawable/oppo_activity_title_bar" android:layout_width="fill_parent" android:layout_height="@dimen/oppo_title_bar_height"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <Button android:textSize="13.0sp" android:textColor="@color/oppo_primary_text_dark" android:layout_gravity="center_vertical" android:id="@id/mark_all" android:background="@drawable/oppo_titlebar_btn_mark_select" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0px" android:text="@string/oppo_menu_select_all" />
+    <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginTop="3.0dip" android:layout_weight="1.0">
+        <TextView android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" style="@android:style/WindowTitle.OPPO" />
+        <TextView android:textAppearance="?textAppearanceSmall" android:textSize="15.0px" android:textColor="#ff424242" android:ellipsize="marquee" android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/marked_count" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-3.0dip" android:singleLine="true" />
+    </LinearLayout>
+    <Button android:textSize="13.0sp" android:textColor="@color/oppo_primary_text_dark" android:layout_gravity="center_vertical" android:id="@id/mark_none" android:background="@drawable/oppo_titlebar_btn_mark_select" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0px" android:text="@string/oppo_menu_cancel_all" />
+</LinearLayout>
