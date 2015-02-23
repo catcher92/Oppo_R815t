@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView android:textStyle="normal" android:gravity="center_vertical" android:id="@id/title" android:background="#ffebeef3" android:paddingLeft="@dimen/oppo_list_separator_text_padding_left" android:layout_height="20.0dip" style="@android:style/Widget.OPPO.TextView.ListSeparator"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

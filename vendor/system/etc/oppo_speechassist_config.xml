@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Config>
+	<!-- defalut value is true -->
+    <bool name="disable_kinect">true</bool>
+	<!-- defalut value is 30 -->
+    <integer name="camera_speech_shoot_cm">30</integer>
+	<!--  defalut value is 50 -->
+    <integer name="assist_speech_cm">50</integer>
+</Config>

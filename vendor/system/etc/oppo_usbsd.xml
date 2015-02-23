@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<oppo-usb>
+	<swap>true</swap>
+	<internalsd>/storage/sdcard0/external_sd</internalsd>
+	<externalsd>/storage/sdcard0</externalsd>	
+</oppo-usb>

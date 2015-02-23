@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.inputmethodservice.ExtractEditLayout android:orientation="horizontal" android:background="@drawable/oppo_ime_extract_layout_bg"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <android.inputmethodservice.ExtractEditText android:gravity="top" android:id="@id/inputExtractEditText" android:background="@drawable/oppo_ime_extract_edittext_bg" android:scrollbars="vertical" android:layout_width="0.0px" android:layout_height="fill_parent" android:layout_marginLeft="8.0dip" android:layout_marginTop="13.0dip" android:layout_marginBottom="13.0dip" android:minLines="1" android:layout_weight="1.0" android:inputType="text" />
+    <FrameLayout android:id="@id/inputExtractAccessories" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent">
+        <android.inputmethodservice.ExtractButton android:layout_gravity="center" android:id="@id/inputExtractAction" android:layout_width="52.0dip" android:layout_height="wrap_content" />
+        <android.inputmethodservice.ExtractButton android:layout_gravity="center" android:id="@id/inputExtractEditButton" android:visibility="invisible" android:layout_width="52.0dip" android:layout_height="wrap_content" android:text="@string/extract_edit_menu_button" />
+    </FrameLayout>
+</android.inputmethodservice.ExtractEditLayout>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/perm_icon" android:layout_width="0.0dip" android:layout_height="0.0dip" android:scaleType="fitCenter" android:layout_alignParentLeft="true" />
+        <TextView android:textAppearance="?textAppearanceMedium" android:textStyle="bold" android:id="@id/permission_group" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="31.0px" android:layout_marginRight="45.0dip" />
+        <TextView android:textAppearance="?textAppearanceSmall" android:textColor="#ff000000" android:id="@id/permission_list" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="31.0px" android:layout_marginRight="45.0dip" android:layout_marginBottom="10.0px" android:layout_below="@id/permission_group" />
+        <CheckBox android:id="@id/checkbox" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="-10.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <View android:layout_gravity="bottom" android:background="@drawable/oppo_divider_horizontal_dark_opaque" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0px" android:layout_marginRight="15.0px" />
+</FrameLayout>
