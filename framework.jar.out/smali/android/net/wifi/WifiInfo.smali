@@ -621,7 +621,7 @@
 .end method
 
 .method public getSSID()Ljava/lang/String;
-    .locals 2
+    .locals 3
 
     .prologue
     .line 131
@@ -645,9 +645,32 @@
     if-nez v1, :cond_0
 
     .line 144
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v2, "\""
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    const-string v2, "\""
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
     .end local v0           #unicode:Ljava/lang/String;
     :goto_0
-    return-object v0
+    return-object v1
 
     .line 141
     .restart local v0       #unicode:Ljava/lang/String;
@@ -656,14 +679,14 @@
 
     invoke-virtual {v1}, Landroid/net/wifi/WifiSsid;->getHexString()Ljava/lang/String;
 
-    move-result-object v0
+    move-result-object v1
 
     goto :goto_0
 
     .line 144
     .end local v0           #unicode:Ljava/lang/String;
     :cond_1
-    const-string v0, "<unknown ssid>"
+    const-string v1, "<unknown ssid>"
 
     goto :goto_0
 .end method
