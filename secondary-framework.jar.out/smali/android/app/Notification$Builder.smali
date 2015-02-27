@@ -1283,7 +1283,7 @@
     return-object v0
 
     :cond_0
-    const v0, 0xc09041d
+    const v0, #android:layout@notification_template_base#t
 
     const/4 v1, 0x1
 
