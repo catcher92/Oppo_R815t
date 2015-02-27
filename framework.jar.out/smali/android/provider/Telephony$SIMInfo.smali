@@ -247,17 +247,17 @@
     iput v3, v0, Landroid/provider/Telephony$SIMInfo;->mSlot:I
 
     .line 2712
-    const-string/jumbo v3, "operator"
+    #const-string/jumbo v3, "operator"
 
-    invoke-interface {p0, v3}, Landroid/database/Cursor;->getColumnIndexOrThrow(Ljava/lang/String;)I
+    #invoke-interface {p0, v3}, Landroid/database/Cursor;->getColumnIndexOrThrow(Ljava/lang/String;)I
 
-    move-result v3
+    #move-result v3
 
-    invoke-interface {p0, v3}, Landroid/database/Cursor;->getString(I)Ljava/lang/String;
+    #invoke-interface {p0, v3}, Landroid/database/Cursor;->getString(I)Ljava/lang/String;
 
-    move-result-object v3
+    #move-result-object v3
 
-    iput-object v3, v0, Landroid/provider/Telephony$SIMInfo;->mOperator:Ljava/lang/String;
+    #iput-object v3, v0, Landroid/provider/Telephony$SIMInfo;->mOperator:Ljava/lang/String;
 
     .line 2715
     const-string/jumbo v3, "ro.operator.optr"

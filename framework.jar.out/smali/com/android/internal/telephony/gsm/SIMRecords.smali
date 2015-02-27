@@ -6869,7 +6869,7 @@
 
     iget-wide v3, v0, Landroid/provider/Telephony$SIMInfo;->mSimId:J
 
-    invoke-static {v1, v2, v3, v4}, Landroid/provider/Telephony$SIMInfo;->setOperator(Landroid/content/Context;Ljava/lang/String;J)I
+    #invoke-static {v1, v2, v3, v4}, Landroid/provider/Telephony$SIMInfo;->setOperator(Landroid/content/Context;Ljava/lang/String;J)I
 
     goto :goto_0
 
