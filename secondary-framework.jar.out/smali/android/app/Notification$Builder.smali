@@ -1252,7 +1252,7 @@
     return-object v0
 
     :cond_0
-    const v0, 0xc090424
+    const v0, #android:layout@notification_template_big_base#t
 
     invoke-direct {p0, v0}, Landroid/app/Notification$Builder;->applyStandardTemplateWithActions(I)Landroid/widget/RemoteViews;
 
