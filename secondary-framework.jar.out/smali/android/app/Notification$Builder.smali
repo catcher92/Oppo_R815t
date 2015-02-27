@@ -269,7 +269,7 @@
 
     .line 1573
     .local v9, showLine2:Z
-    const v11, 0xc020434
+    const v11, #android:id@icon#t
 
     .line 1574
     .local v11, smallIconImageViewId:I
@@ -280,7 +280,7 @@
     if-eqz v2, :cond_0
 
     .line 1575
-    const v2, 0xc020434
+    const v2, #android:id@icon#t
 
     move-object/from16 v0, p0
 
@@ -289,7 +289,7 @@
     invoke-virtual {v1, v2, v3}, Landroid/widget/RemoteViews;->setImageViewBitmap(ILandroid/graphics/Bitmap;)V
 
     .line 1576
-    const v11, 0xc020475
+    const v11, #android:id@right_icon#t
 
     .line 1578
     :cond_0
@@ -302,7 +302,7 @@
     if-ge v2, v3, :cond_1
 
     .line 1580
-    const v2, 0xc020434
+    const v2, #android:id@icon#t
 
     const-string v3, "setBackgroundResource"
 
@@ -311,7 +311,7 @@
     invoke-virtual {v1, v2, v3, v4}, Landroid/widget/RemoteViews;->setInt(ILjava/lang/String;I)V
 
     .line 1582
-    const v2, 0xc020474
+    const v2, #android:id@status_bar_latest_event_content#t
 
     const-string v3, "setBackgroundResource"
 
@@ -348,7 +348,7 @@
     if-eqz v2, :cond_2
 
     .line 1592
-    const v2, 0xc020006
+    const v2, #android:id@title#t
 
     move-object/from16 v0, p0
 
@@ -365,7 +365,7 @@
     if-eqz v2, :cond_3
 
     .line 1595
-    const v2, 0xc020435
+    const v2, #android:id@text#t
 
     move-object/from16 v0, p0
 
@@ -385,7 +385,7 @@
     if-eqz v2, :cond_7
 
     .line 1599
-    const v2, 0xc020473
+    const v2, #android:id@info#t
 
     move-object/from16 v0, p0
 
@@ -394,7 +394,7 @@
     invoke-virtual {v1, v2, v3}, Landroid/widget/RemoteViews;->setTextViewText(ILjava/lang/CharSequence;)V
 
     .line 1600
-    const v2, 0xc020473
+    const v2, #android:id@info#t
 
     const/4 v3, 0x0
 
@@ -412,7 +412,7 @@
     if-eqz v2, :cond_b
 
     .line 1620
-    const v2, 0xc020435
+    const v2, #android:id@text#t
 
     move-object/from16 v0, p0
 
@@ -428,7 +428,7 @@
     if-eqz v2, :cond_a
 
     .line 1622
-    const v2, 0xc020476
+    const v2, #android:id@text2#t
 
     move-object/from16 v0, p0
 
@@ -437,7 +437,7 @@
     invoke-virtual {v1, v2, v3}, Landroid/widget/RemoteViews;->setTextViewText(ILjava/lang/CharSequence;)V
 
     .line 1623
-    const v2, 0xc020476
+    const v2, #android:id@text2#t
 
     const/4 v3, 0x0
 
@@ -474,7 +474,7 @@
 
     .line 1645
     .local v12, subTextSize:F
-    const v2, 0xc020435
+    const v2, #android:id@text#t
 
     const/4 v3, 0x0
 
@@ -484,7 +484,7 @@
     .end local v8           #res:Landroid/content/res/Resources;
     .end local v12           #subTextSize:F
     :cond_4
-    const v2, 0xc020477
+    const v2, #android:id@line1#t
 
     const/4 v3, 0x0
 
@@ -516,14 +516,14 @@
     if-eqz v2, :cond_e
 
     .line 1653
-    const v2, 0xc020478
+    const v2, #android:id@chronometer#t
 
     const/4 v3, 0x0
 
     invoke-virtual {v1, v2, v3}, Landroid/widget/RemoteViews;->setViewVisibility(II)V
 
     .line 1654
-    const v2, 0xc020478
+    const v2, #android:id@chronometer#t
 
     const-string v3, "setBase"
 
@@ -546,7 +546,7 @@
     invoke-virtual {v1, v2, v3, v4, v5}, Landroid/widget/RemoteViews;->setLong(ILjava/lang/String;J)V
 
     .line 1656
-    const v2, 0xc020478
+    const v2, #android:id@chronometer#t
 
     const-string v3, "setStarted"
 
@@ -556,7 +556,7 @@
 
     .line 1664
     :goto_3
-    const v3, 0xc020479
+    const v3, #android:id@line3#t
 
     if-eqz v10, :cond_10
 
@@ -566,7 +566,7 @@
     invoke-virtual {v1, v3, v2}, Landroid/widget/RemoteViews;->setViewVisibility(II)V
 
     .line 1665
-    const v3, 0xc020483
+    const v3, #android:id@overflow_divider#t
 
     if-eqz v10, :cond_11
 
@@ -618,7 +618,7 @@
     if-le v2, v13, :cond_8
 
     .line 1606
-    const v2, 0xc020473
+    const v2, #android:id@info#t
 
     move-object/from16 v0, p0
 
@@ -638,7 +638,7 @@
 
     .line 1612
     :goto_6
-    const v2, 0xc020473
+    const v2, #android:id@info#t
 
     const/4 v3, 0x0
 
@@ -658,7 +658,7 @@
 
     .line 1610
     .local v7, f:Ljava/text/NumberFormat;
-    const v2, 0xc020473
+    const v2, #android:id@info#t
 
     move-object/from16 v0, p0
 
@@ -678,7 +678,7 @@
     .end local v7           #f:Ljava/text/NumberFormat;
     .end local v13           #tooBig:I
     :cond_9
-    const v2, 0xc020473
+    const v2, #android:id@info#t
 
     const/16 v3, 0x8
 
@@ -688,7 +688,7 @@
 
     .line 1626
     :cond_a
-    const v2, 0xc020476
+    const v2, #android:id@text2#t
 
     const/16 v3, 0x8
 
@@ -698,7 +698,7 @@
 
     .line 1629
     :cond_b
-    const v2, 0xc020476
+    const v2, #android:id@text2#t
 
     const/16 v3, 0x8
 
@@ -759,14 +759,14 @@
 
     .line 1658
     :cond_e
-    const v2, 0xc020472
+    const v2, #android:id@time#t
 
     const/4 v3, 0x0
 
     invoke-virtual {v1, v2, v3}, Landroid/widget/RemoteViews;->setViewVisibility(II)V
 
     .line 1659
-    const v2, 0xc020472
+    const v2, #android:id@time#t
 
     const-string v3, "setTime"
 
