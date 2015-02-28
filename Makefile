@@ -54,7 +54,7 @@ vendor_remove_files := media/bootaudio.ogg media/bootaudio.mp3 media/shutaudio.m
 # The default value is Bluetooth.
 # You can configure the apk name in the vendor/system/app or vendor/system/pri-app directory.
 #-----------------------------------------------------------------------------
-vendor_saved_apps := FMRadio MtkBt Stk1 StkSelection
+vendor_saved_apps := FMRadio MtkBt Stk1 StkSelection OppoUsbSelection
 
 ##############################################################################
 # The value decides which vendor apk you want to modify.
