@@ -21,7 +21,7 @@
 
     move-result-object v2
 
-    const v3, 0x1080a91
+    const v3, #android:drawable@baidu_keyguard_water_camera_normal#t
 
     invoke-static {v2, v3}, Landroid/graphics/BitmapFactory;->decodeResource(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
 
@@ -37,7 +37,7 @@
 
     move-result-object v2
 
-    const v3, 0x1080a92
+    const v3, #android:drawable@baidu_keyguard_water_camera_pressed#t
 
     invoke-static {v2, v3}, Landroid/graphics/BitmapFactory;->decodeResource(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
 
@@ -53,7 +53,7 @@
 
     move-result-object v2
 
-    const v3, 0x1080a99
+    const v3, #android:drawable@baidu_keyguard_water_phone_normal#t
 
     invoke-static {v2, v3}, Landroid/graphics/BitmapFactory;->decodeResource(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
 
@@ -69,7 +69,7 @@
 
     move-result-object v2
 
-    const v3, 0x1080a9a
+    const v3, #android:drawable@baidu_keyguard_water_phone_pressed#t
 
     invoke-static {v2, v3}, Landroid/graphics/BitmapFactory;->decodeResource(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
 
@@ -85,7 +85,7 @@
 
     move-result-object v2
 
-    const v3, 0x1080a95
+    const v3, #android:drawable@baidu_keyguard_water_message_normal#t
 
     invoke-static {v2, v3}, Landroid/graphics/BitmapFactory;->decodeResource(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
 
@@ -101,7 +101,7 @@
 
     move-result-object v2
 
-    const v3, 0x1080a96
+    const v3, #android:drawable@baidu_keyguard_water_message_pressed#t
 
     invoke-static {v2, v3}, Landroid/graphics/BitmapFactory;->decodeResource(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
 
@@ -117,7 +117,7 @@
 
     move-result-object v2
 
-    const v3, 0x1080aa4
+    const v3, #android:drawable@baidu_keyguard_water_unlock_normal#t
 
     invoke-static {v2, v3}, Landroid/graphics/BitmapFactory;->decodeResource(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
 
@@ -133,7 +133,7 @@
 
     move-result-object v2
 
-    const v3, 0x1080aa5
+    const v3, #android:drawable@baidu_keyguard_water_unlock_pressed#t
 
     invoke-static {v2, v3}, Landroid/graphics/BitmapFactory;->decodeResource(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
 
@@ -149,7 +149,7 @@
 
     move-result-object v2
 
-    const v3, 0x1080a93
+    const v3, #android:drawable@baidu_keyguard_water_handle_normal#t
 
     invoke-static {v2, v3}, Landroid/graphics/BitmapFactory;->decodeResource(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
 
@@ -165,7 +165,7 @@
 
     move-result-object v2
 
-    const v3, 0x1080a94
+    const v3, #android:drawable@baidu_keyguard_water_handle_pressed#t
 
     invoke-static {v2, v3}, Landroid/graphics/BitmapFactory;->decodeResource(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
 
@@ -249,7 +249,7 @@
     .line 244
     new-instance v18, Lcom/baidu/internal/keyguard/water/TargetView$TargetIcon;
 
-    const/16 v22, 0x8c
+    const/16 v22, 0xaa
 
     const/16 v23, 0x187
 
@@ -353,7 +353,7 @@
 
     move-result-object v2
 
-    const/high16 v3, 0x10a
+    const/high16 v3, #android:anim@fade_in#h
 
     invoke-static {v2, v3}, Landroid/view/animation/AnimationUtils;->loadAnimation(Landroid/content/Context;I)Landroid/view/animation/Animation;
 
@@ -376,7 +376,7 @@
 
     move-result-object v3
 
-    const/high16 v6, 0x10e
+    const/high16 v6, #android:integer@config_shortAnimTime#h
 
     invoke-virtual {v3, v6}, Landroid/content/res/Resources;->getInteger(I)I
 
@@ -414,7 +414,7 @@
 
     move-result-object v3
 
-    const/high16 v6, 0x10e
+    const/high16 v6, #android:integer@config_shortAnimTime#h
 
     invoke-virtual {v3, v6}, Landroid/content/res/Resources;->getInteger(I)I
 
