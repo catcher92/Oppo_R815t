@@ -435,17 +435,6 @@
 
     .prologue
     .line 759
-    invoke-static {p0}, Landroid/graphics/Typeface;->isAppInFlipList(Ljava/lang/String;)Z
-
-    move-result v0
-
-    if-eqz v0, :cond_0
-
-    .line 765
-    invoke-static {}, Landroid/graphics/Typeface;->SetFlipFonts()V
-
-    .line 769
-    :cond_0
     return-void
 .end method
 
