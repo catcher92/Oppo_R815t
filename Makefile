@@ -54,7 +54,7 @@ vendor_remove_files := media/bootaudio.ogg media/bootaudio.mp3 media/shutaudio.m
 # The default value is Bluetooth.
 # You can configure the apk name in the vendor/system/app or vendor/system/pri-app directory.
 #-----------------------------------------------------------------------------
-vendor_saved_apps := FMRadio MtkBt Stk1 StkSelection OppoUsbSelection OppoCamera
+vendor_saved_apps := FMRadio MtkBt Stk1 StkSelection OppoUsbSelection OppoCamera OppoMusic OppoCompass OppoFlashLight
 
 ##############################################################################
 # The value decides which vendor apk you want to modify.
@@ -93,7 +93,7 @@ vendor_modify_jars := framework mediatek-framework oppo-framework pm secondary-f
 # The default value is nothing.
 # You can configure the baidu system apk name in the value.
 #-----------------------------------------------------------------------------
-baidu_remove_apps := BaiduCamera
+baidu_remove_apps := BaiduCamera BaiduUpdate BaiduMusicPlayer BaiduFlashlight
 
 ##############################################################################
 # The value decides which apk you want to modify, when the apk is based on the baidu system apk.
