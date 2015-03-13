@@ -144,6 +144,9 @@ baidu_modify_jars := android.policy
 # You should configure the property according to your ID, ie, replace "Coron" with your ID.
 override_property += \
     ro.baidu.romer=cxd541806675 \
+    romzj.rom.id=708b0a01-039d-74c5-fe85-0eb0c911b463 \
+    romzj.rom.version=公测版67 \
+    romzj.rom.version.code=67 \
     persist.sys.baidu.default_write=secondary_storage \
     ro.baidu.asec.type=1 \
     ro.baidu.romerinfo=Welcome to QQ qun:430363479
